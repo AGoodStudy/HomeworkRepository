@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dsh.shixun.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="cn.dsh.shixun.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+  </resultMap>
+
+
+  <select id="findByEmail" resultType="User" parameterType="String">
+        select * from user where email = #{userEmail}
+    </select>
+
+  <select id="loginByPassword" resultType="User" parameterType="String">
+        select * from user where email = #{userEmail} and password =#{md5pwd}
+  </select>
+
+  <select id="selectEmailById" resultType="String" parameterType="Long">
+        select email from user where id = #{id}
+  </select>
+
+  <update id="updateUserInfoById" parameterType="User">
+        update User
+        <set>
+          <if test="nickname != null and nickname !=''">
+            nickname = #{nickname},
+          </if>
+          <if test="age != null">
+            age = #{age},
+          </if>
+          <if test="gender != null">
+            gender = #{gender},
+          </if>
+        </set>
+        where id = #{id}
+  </update>
+
+</mapper>
