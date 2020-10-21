@@ -32,12 +32,12 @@ public class EmailService {
     /**
      * 指明邮件的发件人
      */
-    private static String EMAILFROM = "2359721314@qq.com";
+    private static String EMAILFROM = "xxxxxxx";
 
     /**
      * 密码
      */
-    private static String PASSWORD = "zdoowfzbfygyebhe";
+    private static String PASSWORD = "xxxxxxxxx";
 
     /**
      * 指明邮件的收件人
